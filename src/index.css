@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Agricultural Design System */
+    --background: 42 15% 98%;
+    --foreground: 120 15% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 120 15% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 15% 12%;
+
+    /* Agricultural greens */
+    --primary: 85 45% 35%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 85 45% 45%;
+
+    /* Earth tones */
+    --secondary: 35 25% 85%;
+    --secondary-foreground: 35 15% 25%;
+
+    --muted: 35 20% 92%;
+    --muted-foreground: 35 15% 35%;
+
+    /* Wheat gold accent */
+    --accent: 45 85% 60%;
+    --accent-foreground: 35 15% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 85 45% 35%;
+
+    /* Farm-specific colors */
+    --farm-earth: 35 35% 45%;
+    --farm-sky: 200 75% 85%;
+    --farm-wheat: 45 85% 65%;
+    --farm-crop: 95 50% 40%;
+    
+    /* Gradients */
+    --gradient-field: linear-gradient(135deg, hsl(var(--farm-crop)), hsl(var(--primary)));
+    --gradient-earth: linear-gradient(180deg, hsl(var(--farm-earth)), hsl(35 25% 35%));
+    --gradient-sky: linear-gradient(180deg, hsl(var(--farm-sky)), hsl(200 60% 75%));
+    --gradient-harvest: linear-gradient(135deg, hsl(var(--farm-wheat)), hsl(var(--accent)));
+    
+    /* Shadows with earth tones */
+    --shadow-farm: 0 4px 20px hsl(35 25% 25% / 0.1);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.2);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 120 15% 8%;
+    --foreground: 42 15% 95%;
+
+    --card: 120 15% 10%;
+    --card-foreground: 42 15% 95%;
+
+    --popover: 120 15% 10%;
+    --popover-foreground: 42 15% 95%;
+
+    --primary: 85 45% 55%;
+    --primary-foreground: 120 15% 8%;
+    --primary-glow: 85 45% 65%;
+
+    --secondary: 35 15% 20%;
+    --secondary-foreground: 42 15% 85%;
+
+    --muted: 35 15% 18%;
+    --muted-foreground: 35 15% 75%;
+
+    --accent: 45 75% 55%;
+    --accent-foreground: 120 15% 8%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 42 15% 95%;
+
+    --border: 35 15% 20%;
+    --input: 35 15% 20%;
+    --ring: 85 45% 55%;
+
+    /* Dark farm colors */
+    --farm-earth: 35 25% 25%;
+    --farm-sky: 200 35% 25%;
+    --farm-wheat: 45 65% 45%;
+    --farm-crop: 95 40% 30%;
+    
+    /* Dark gradients */
+    --gradient-field: linear-gradient(135deg, hsl(var(--farm-crop)), hsl(var(--primary)));
+    --gradient-earth: linear-gradient(180deg, hsl(var(--farm-earth)), hsl(35 20% 15%));
+    --gradient-sky: linear-gradient(180deg, hsl(var(--farm-sky)), hsl(200 30% 15%));
+    --gradient-harvest: linear-gradient(135deg, hsl(var(--farm-wheat)), hsl(var(--accent)));
+    
+    --shadow-farm: 0 4px 20px hsl(120 15% 5% / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.3);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Agricultural animations */
+  @keyframes tractor-drive {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+  }
+
+  @keyframes crop-sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  @keyframes data-encrypt {
+    0% { filter: blur(0px); opacity: 1; }
+    50% { filter: blur(8px); opacity: 0.3; }
+    100% { filter: blur(4px); opacity: 0.6; }
+  }
+
+  .tractor-animation {
+    animation: tractor-drive 20s linear infinite;
+  }
+
+  .crop-sway {
+    animation: crop-sway 3s ease-in-out infinite;
+  }
+
+  .encrypted-data {
+    animation: data-encrypt 2s ease-in-out infinite alternate;
+  }
+
+  /* Agricultural component styles */
+  .farm-card {
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+    box-shadow: var(--shadow-farm);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .yield-prediction {
+    background: var(--gradient-field);
+    backdrop-filter: blur(10px);
+  }
+
+  .encrypted-overlay {
+    background: linear-gradient(45deg, 
+      transparent 25%, 
+      hsl(var(--muted) / 0.5) 25%, 
+      hsl(var(--muted) / 0.5) 50%, 
+      transparent 50%, 
+      transparent 75%, 
+      hsl(var(--muted) / 0.5) 75%
+    );
+    background-size: 20px 20px;
+  }
+}
